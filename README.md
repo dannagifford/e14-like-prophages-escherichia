@@ -2,7 +2,7 @@
 
 This pipeline compares the cryptic e14 prophage of *Escherichia coli* K-12 with related prophages and phage genomes. It downloads genome records, estimates prophage boundaries using e14-associated *icd* homology, annotates extracted sequences, compares nucleotide similarity and gene organisation, and reconstructs relationships using protein families that include e14.
 
-The workflow also compares the original MG1655 e14 CDS annotation with PHANOTATE calls on the same nucleotide sequence. The original annotation is included as a separate control track in an augmented Clinker comparison, but is excluded from the main nucleotide comparisons and phylogeny.
+The workflow also compares the original MG1655 e14 CDS annotation with PHANOTATE calls on the same nucleotide sequence. The original annotation is included as a separate control track in a Clinker comparison, but is excluded from the main nucleotide comparisons and phylogeny.
 
 ## Requirements
 
@@ -11,7 +11,7 @@ The workflow also compares the original MG1655 e14 CDS annotation with PHANOTATE
 - A tab-separated `manifest.tsv` in the repository root.
 - Space for the Pharokka and Phold databases and intermediate outputs. Installation and annotation requirements depend on the database and software versions.
 
-Run all commands from the repository root. Scripts and their Python helpers should use the filenames shown below, without upload suffixes such as `(1)` or `(2)`.
+Run all commands from the repository root.
 
 ## TL;DR
 
@@ -72,7 +72,7 @@ bash 02_find_boundaries.sh
 
 Inspect `boundaries/boundaries.tsv`, candidate-hit tables and the extracted context before proceeding. Candidate sequences include the outer edges of the selected attachment-associated homology blocks. Canonical e14 retains its supplied coordinates; complete phage records retain their full sequence.
 
-The method first searches for paired K-12 e14/*icd*-associated homologs, then falls back to direct boundary homology and finally to the seed interval. These are conservative boundary estimates, not experimentally confirmed attachment sites. A seed-interval fallback requires manual review.
+The method first searches for paired K-12 e14/*icd*-associated homologs, then falls back to direct boundary homology and finally to the seed interval. These are conservative boundary estimates, not experimentally confirmed attachment sites. A seed-interval fallback requires manual inspection of the genome.
 
 ### 3. Annotate and compare
 
@@ -83,7 +83,7 @@ bash 04_compare.sh
 
 Stage 03 sanitises FASTA headers, calls genes with PHANOTATE through Pharokka, and uses Phold for structure-informed annotation. Stable downstream GenBank copies are placed in `annotation/final_gbk/`.
 
-Stage 04 runs nucleotide BLAST in both directions for every pair. It greedily retains non-overlapping query HSPs by score and reports directional query coverage and alignment-length-weighted identity, together with symmetric summaries. The coverage calculation is conservative: an overlapping HSP is discarded in full. These summaries are descriptive, rather than phylogenetic distances.
+Stage 04 runs nucleotide BLAST in both directions for every pair. It greedily retains non-overlapping query High-scoring Segment Pairs (HSPs) by score and reports directional query coverage and alignment-length-weighted identity, together with symmetric summaries. The coverage calculation is conservative: an overlapping HSP is discarded in full. These summaries are descriptive, rather than phylogenetic distances.
 
 Clinker comparisons include automatic and manifest ordering. The augmented comparison adds the original MG1655 e14 annotation beside the pipeline annotation. The annotation comparison reports coordinate matches, alternative starts/stops and possible splits or merges.
 
