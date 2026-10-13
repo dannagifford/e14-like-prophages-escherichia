@@ -1,0 +1,8 @@
+label	organism	accession	type	seed_start	seed_end	flank_bp	boundary_mode	notes
+Ecoli_K12_e14	Escherichia coli K-12 MG1655	NC_000913.3	prophage	1196209	1211412	10000	known_icd	Canonical e14 positive control; known icd integration locus
+Ecoli_JB2	Escherichia coli JB2	CP182203.1	prophage	3110037	3149530	10000	icd_first	Seed interval from CP125351-like BLAST cluster; infer final boundaries
+Efergusonii_CP125351	Escherichia fergusonii XJ19MCE1	CP125351.1	prophage	2656679	2699046	10000	icd_first	Current 42,368-bp icd-guided candidate; refine attL/attR
+Ealbertii_CP043262	Escherichia albertii RM9976	CP043262.1	prophage	2733988	2773220	10000	icd_first	Seed interval spanning the main coherent CP125351-like BLAST cluster
+Emarmotae_CP173213	Escherichia marmotae F12YCO47	CP173213.1	prophage	2417684	2452364	10000	icd_first	Seed interval spanning the main coherent CP125351-like BLAST cluster
+phage_720R4	Escherichia phage vB_EcoM-720R4	ON470603.1	free_phage			0	none	Use complete phage genome; no host-context boundary inference
+phage_689R6	Escherichia phage vB_EcoM-689R6	ON470584.1	free_phage			0	none	INPHARED Mash top hit for e14, E. albertii CP043262 and E. marmotae CP173213
