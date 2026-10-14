@@ -182,7 +182,7 @@ Defaults are a 2,000-bp K-12 reference window, 75% minimum identity and 70-bp mi
 
 ## Rerunning and reproducibility
 
-Stages reuse existing outputs. File presence alone does not establish that an output matches the current sequences, parameters or database versions. After changing boundaries, annotation inputs or comparison settings, explicitly rebuild the affected stages:
+Stages reuse existing outputs. After changing boundaries, annotation inputs, database versions or comparison settings, explicitly rebuild the affected stages:
 
 ```bash
 FORCE=1 bash 03_annotate.sh
